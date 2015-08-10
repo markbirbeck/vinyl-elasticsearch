@@ -22,7 +22,7 @@
   "homepage": "https://github.com/markbirbeck/vinyl-elasticsearch",
   "dependencies": {
     "elasticsearch": "^4.0.2",
-    "through2": "~0.6.3"
+    "highland": "^2.5.1"
   },
   "devDependencies": {
     "gulp": "^3.8.11"
