@@ -38,6 +38,6 @@ The index into which the documents should be saved is specified in the `index` p
 
 The type of the document is set in the `type` property of either `glob` or `opt`. If it's not present then the `base` property of the Vinyl file will be used.
 
-The `id` of the document comes from the `id` property of the Vinyl file, or from `glob` or `opt` if it's not present. If no `id` value is provided then ElasticSearch will create a value automatically.
+The `id` of the document comes from the `id` property of the Vinyl file, from the `path` (using `relative`) or from the `id` property on `glob` or `opt`. If no `id` value is provided then ElasticSearch will create a value automatically.
 
 The body of the document will be set to the `data` property of the Vinyl file if it's present. Otherwise the buffer in the `contents` property will be converted to a string and then parsed as JSON.
