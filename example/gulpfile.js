@@ -13,11 +13,11 @@ gulp.task('default', function() {
     .pipe(
       elasticsearch.dest(
         {
-          index: 'someindex',
+          index: process.env.ELASTICSEARCH_INDEX,
           type: 'somedoc'
         },
         {
-          host: 'https://localhost:9200',
+          host: process.env.ELASTICSEARCH_HOST,
           log: 'trace'
         }
       )
