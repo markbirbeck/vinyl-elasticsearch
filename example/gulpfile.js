@@ -8,7 +8,7 @@ var gulp = require('gulp');
 
 var elasticsearch = require('../');
 
-gulp.task('default', function (){
+gulp.task('default', function() {
   return gulp.src('hello.json')
     .pipe(
       elasticsearch.dest(
