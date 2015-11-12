@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/markbirbeck/vinyl-elasticsearch",
   "dependencies": {
-    "elasticsearch": "^4.0.2",
+    "elasticsearch": "^9.0.0",
     "highland": "^2.5.1"
   },
   "devDependencies": {
