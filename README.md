@@ -40,8 +40,8 @@ The index, document type and id are usually derived from the `file` object being
 * the `file.type` value, of if none is present, the `file.base` value;
 * the `file.id` value, or if none is present the `file.path` value.
 
-For any of these values that is not present the corresponding value from `glob` will be used.
+For any of these values that is not present the corresponding value from `opt` will be used.
 
-However, to make it possible to override values across the board, any settings in `opt` take priority.
+However, to make it possible to override values across the board, any settings in `glob` take priority.
 
 The body of the document will be set to the `data` property of the Vinyl file if it's present. Otherwise the buffer in the `contents` property will be converted to a string and then parsed as JSON.
