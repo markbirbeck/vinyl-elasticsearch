@@ -1,6 +1,6 @@
 {
   "name": "vinyl-elasticsearch",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Presents ElasticSearch as a destination stream of Vinyl objects.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
