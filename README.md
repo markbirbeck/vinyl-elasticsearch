@@ -34,10 +34,14 @@ gulp.task('default', function (){
 
 The configuration for the connection to ES comes from the `opt` parameter, which is used when creating the client. Possible options are described at [ElasticSearch Configuration](http://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/configuration.html).
 
-The index into which the documents should be saved is specified in the `index` property of either `glob` or `opt`.
+The index, document type and id are usually derived from the `file` object being passed through, using:
 
-The type of the document is set in the `type` property of either `glob` or `opt`. If it's not present then the `base` property of the Vinyl file will be used.
+* the `file.index` value;
+* the `file.type` value, of if none is present, the `file.base` value;
+* the `file.id` value, or if none is present the `file.path` value.
 
-The `id` of the document comes from the `id` property of the Vinyl file, from the `path` (using `relative`) or from the `id` property on `glob` or `opt`. If no `id` value is provided then ElasticSearch will create a value automatically.
+For any of these values that is not present the corresponding value from `glob` will be used.
+
+However, to make it possible to override values across the board, any settings in `opt` take priority.
 
 The body of the document will be set to the `data` property of the Vinyl file if it's present. Otherwise the buffer in the `contents` property will be converted to a string and then parsed as JSON.
