@@ -75,6 +75,16 @@ gulp.task('default', function (){
 
 The configuration for the connection to ES comes from the `opt` parameter, which is used when creating the client. Possible options are described at [ElasticSearch Configuration](http://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/configuration.html).
 
+In addition, if `opt.amazonES` is present then each message is signed. This makes it possible to use Amazon's ElasticSearch Service. Possible values for `amazonES` are:
+
+```json
+"amazonES": {
+  "region": "someregion",
+  "accessKey": "accesskeyid",
+  "secretKey": "secretaccesskey"
+}
+```
+
 ### dest(glob, opt)
 
 The configuration for the connection to ES comes from the `opt` parameter, as described above.

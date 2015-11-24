@@ -23,6 +23,7 @@
   "dependencies": {
     "elasticsearch": "^9.0.1",
     "highland": "^2.5.1",
+    "http-aws-es": "^1.1.2",
     "lodash": "^3.10.1"
   },
   "devDependencies": {
