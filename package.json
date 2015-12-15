@@ -26,6 +26,7 @@
     "http-aws-es": "^1.1.2",
     "lodash": "^3.10.1"
   },
+  "engine": ">= 4.0.0",
   "devDependencies": {
     "gulp": "^3.9.0",
     "vinyl": "^1.1.0"
