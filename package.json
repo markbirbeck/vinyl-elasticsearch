@@ -25,7 +25,8 @@
     "elasticsearch": "^10.0.1",
     "highland": "^2.5.1",
     "http-aws-es": "^1.1.2",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "retry": "^0.8.0"
   },
   "engine": ">= 4.0.0",
   "devDependencies": {
