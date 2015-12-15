@@ -5,14 +5,14 @@ chai.use(require('chai-as-promised'));
 
 let path = require('path');
 
-let uut = require('../lib/manageTemplate');
+let uut = require('../lib/manageTemplate').promise;
 let amazonES = {
   region: process.env.ELASTICSEARCH_AWS_DEFAULT_REGION,
   accessKey: process.env.ELASTICSEARCH_AWS_ACCESS_KEY_ID,
   secretKey: process.env.ELASTICSEARCH_AWS_SECRET_ACCESS_KEY
 };
 
-describe('#manageTemplate()', function() {
+describe('#manageTemplate.promise()', function() {
   this.timeout(10000);
 
   describe('overwrite flag is true', () => {
