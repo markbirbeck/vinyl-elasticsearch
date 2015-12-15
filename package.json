@@ -3,7 +3,8 @@
   "version": "0.17.0",
   "description": "Presents ElasticSearch as a destination stream of Vinyl objects.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "preversion": "npm test"
   },
   "keywords": [
     "vinyl",
@@ -28,7 +29,10 @@
   },
   "engine": ">= 4.0.0",
   "devDependencies": {
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.1.0",
     "gulp": "^3.9.0",
+    "mocha": "^2.3.4",
     "vinyl": "^1.1.0"
   }
 }
