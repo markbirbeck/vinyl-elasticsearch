@@ -40,7 +40,7 @@ describe('#manageTemplate.promise()', function() {
         templateOverwrite: true,
         templateDir: path.join(__dirname, './fixtures/templates')
       })
-      .should.be.rejectedWith('Error: No Living connections');
+      .should.be.rejectedWith('No Living connections');
       ;
     });
 
