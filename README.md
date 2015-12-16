@@ -83,7 +83,7 @@ If `opt.manageTemplate` is `true`, then templates will be maintained automatical
 
 For example:
 
-```json
+```javascript
 {
   templateName: 'logstash,listenaction',
   templateOverwrite: true,
@@ -95,11 +95,11 @@ For example:
 
 In addition, if `opt.amazonES` is present then each message is signed. This makes it possible to use Amazon's ElasticSearch Service. Possible values for `amazonES` are:
 
-```json
-"amazonES": {
-  "region": "someregion",
-  "accessKey": "accesskeyid",
-  "secretKey": "secretaccesskey"
+```javascript
+amazonES: {
+  region: 'someregion',
+  accessKey: 'accesskeyid',
+  secretKey: 'secretaccesskey'
 }
 ```
 
