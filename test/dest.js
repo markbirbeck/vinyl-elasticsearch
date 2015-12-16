@@ -29,7 +29,7 @@ describe('dest', function() {
 
   this.timeout(10000);
 
-  it.only('manageTemplate fails when missing templateName parameter', function(done) {
+  it('manageTemplate fails when missing templateName parameter', function(done) {
     let opt = _.clone(_opt);
 
     /**
