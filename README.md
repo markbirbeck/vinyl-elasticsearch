@@ -75,6 +75,24 @@ gulp.task('default', function (){
 
 The configuration for the connection to ES comes from the `opt` parameter, which is used when creating the client. Possible options are described at [ElasticSearch Configuration](http://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/configuration.html).
 
+In addtion to the ElasticSearch options, a few more have been added to help manage templates, use the AWS version of ElasticSearch, and to configure retries.
+
+#### Managing Templates
+
+If `opt.manageTemplate` is `true`, then templates will be maintained automatically on the ElasticSearch host. This involves checking for one or more templates with the names indicated in `templateName`, and if they don't exist (or the `templateOverwrite` value is set to `true`) then the appropriate template from the `templateDir` is uploaded. If any of these parameters are missing then errors will be propagated back to the caller.
+
+For example:
+
+```json
+{
+  templateName: 'logstash,listenaction',
+  templateOverwrite: true,
+  templateDir: path.join(__dirname, '../fixtures/templates')
+}
+```
+
+#### Using the AWS Version of ElasticSearch
+
 In addition, if `opt.amazonES` is present then each message is signed. This makes it possible to use Amazon's ElasticSearch Service. Possible values for `amazonES` are:
 
 ```json
@@ -84,6 +102,12 @@ In addition, if `opt.amazonES` is present then each message is signed. This make
   "secretKey": "secretaccesskey"
 }
 ```
+
+#### Configuring Retries
+
+Some ElasticSearch actions may fail for reasons that are temporary, such as servers being busy with nightly backups, or network failures. To help deal with this `opts.retries` can be set to indicate the number of retries, with the default being zero.
+
+The retry strategy uses the [retry module](https://www.npmjs.com/package/retry) and the backoff strategy is [described there](https://www.npmjs.com/package/retry#tutorial).
 
 ### dest(glob, opt)
 
