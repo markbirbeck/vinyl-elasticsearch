@@ -73,12 +73,24 @@ describe('#manageTemplate.promise()', function() {
     });
   });
 
-  describe('manageTemplate flag is false', () => {
-    it('should not overwrite template', function() {
+  describe('should not overwrite template', () => {
+    it('if manageTemplate flag is false', function() {
       return uut({
         host: process.env.ELASTICSEARCH_HOST,
         amazonES,
         manageTemplate: false,
+        templateName: 'testtemplate',
+        templateOverwrite: false,
+        templateDir: path.join(__dirname, './fixtures/templates')
+      })
+      .should.eventually.equal(false)
+      ;
+    });
+
+    it('manageTemplate flag is undefined', function() {
+      return uut({
+        host: process.env.ELASTICSEARCH_HOST,
+        amazonES,
         templateName: 'testtemplate',
         templateOverwrite: false,
         templateDir: path.join(__dirname, './fixtures/templates')
