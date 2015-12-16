@@ -58,21 +58,6 @@ describe('#manageTemplate.promise()', function() {
     });
   });
 
-  describe('overwrite flag is false', () => {
-    it('should not overwrite template if it already exists', function() {
-      return uut({
-        host: process.env.ELASTICSEARCH_HOST,
-        amazonES,
-        manageTemplate: true,
-        templateName: 'testtemplate',
-        templateOverwrite: false,
-        templateDir: path.join(__dirname, './fixtures/templates')
-      })
-      .should.eventually.equal(false)
-      ;
-    });
-  });
-
   describe('should not overwrite template', () => {
     it('if manageTemplate flag is false', function() {
       return uut({
@@ -91,6 +76,19 @@ describe('#manageTemplate.promise()', function() {
       return uut({
         host: process.env.ELASTICSEARCH_HOST,
         amazonES,
+        templateName: 'testtemplate',
+        templateOverwrite: false,
+        templateDir: path.join(__dirname, './fixtures/templates')
+      })
+      .should.eventually.equal(false)
+      ;
+    });
+
+    it('if it already exists and templateOverwrite is false', function() {
+      return uut({
+        host: process.env.ELASTICSEARCH_HOST,
+        amazonES,
+        manageTemplate: true,
         templateName: 'testtemplate',
         templateOverwrite: false,
         templateDir: path.join(__dirname, './fixtures/templates')
