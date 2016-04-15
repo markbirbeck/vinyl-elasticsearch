@@ -125,6 +125,8 @@ However, to make it possible to override values across the board, any settings i
 
 The body of the document will be set to the `data` property of the Vinyl file if it's present. Otherwise the buffer in the `contents` property will be converted to a string and then parsed as JSON.
 
+As of v1.7.0, writing to ES uses the bulk update API. The sequence is that each new item to be indexed is collected in memory and then the whole batch is pushed to ES in one go. The trigger to cause the push is either that the batch size has been reached (which defaults to 5000, but can be set with `opt.batchSize`) or that the batch timeout has elapsed (which defaults to 5000 millisecond, but can be set with `opt.batchTimeout`).
+
 ### src(glob, opt)
 
 The configuration for the connection to ES comes from the `opt` parameter, as described above.
