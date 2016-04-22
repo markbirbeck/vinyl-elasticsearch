@@ -47,15 +47,16 @@ describe('src', function() {
       err.should.be.an('Error');
       err.message.should.contain('No Living connections');
     })
-    .toArray(xs => {
+    .collect()
+    .doto(ar => {
 
       /**
        * Ensure there is no data:
        */
 
-      xs.should.have.length(0);
-      done();
+      ar.should.have.length(0);
     })
+    .done(done)
     ;
   })
 
@@ -72,8 +73,9 @@ describe('src', function() {
         }
       }
     }, opt)
-    .toArray(xs => {
-      let hits = xs[0].data.hits.hits;
+    .collect()
+    .doto(ar => {
+      let hits = ar[0].data.hits.hits;
 
       /**
        * Ensure there is one record:
@@ -81,8 +83,8 @@ describe('src', function() {
 
       hits.should.have.length(1);
       hits[0].should.have.property('_type', 'ListenAction');
-      done();
     })
+    .done(done)
     ;
   })
 });

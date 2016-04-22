@@ -54,15 +54,16 @@ describe('dest', function() {
       err.should.be.an('Error');
       err.message.should.equal('manageTemplate failed: Missing templateName parameter');
     })
-    .toArray(xs => {
+    .collect()
+    .doto(ar => {
 
       /**
        * Ensure there is no data:
        */
 
-      xs.should.have.length(0);
-      done();
+      ar.should.have.length(0);
     })
+    .done(done)
     ;
   })
 });
