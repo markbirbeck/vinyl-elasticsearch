@@ -7,11 +7,6 @@ let uut = require('../lib/dest');
 
 let _opt = {
   host: process.env.ELASTICSEARCH_HOST,
-  amazonES: {
-    region: process.env.ELASTICSEARCH_AWS_DEFAULT_REGION,
-    accessKey: process.env.ELASTICSEARCH_AWS_ACCESS_KEY_ID,
-    secretKey: process.env.ELASTICSEARCH_AWS_SECRET_ACCESS_KEY
-  },
   retries: 2,
   manageTemplate: true,
   templateName: 'testTemplate',
