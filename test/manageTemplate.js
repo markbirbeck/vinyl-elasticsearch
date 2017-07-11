@@ -6,11 +6,6 @@ chai.use(require('chai-as-promised'));
 let path = require('path');
 
 let uut = require('../lib/manageTemplate').promise;
-let amazonES = {
-  region: process.env.ELASTICSEARCH_AWS_DEFAULT_REGION,
-  accessKey: process.env.ELASTICSEARCH_AWS_ACCESS_KEY_ID,
-  secretKey: process.env.ELASTICSEARCH_AWS_SECRET_ACCESS_KEY
-};
 
 describe('#manageTemplate.promise()', function() {
   this.timeout(10000);
@@ -19,7 +14,6 @@ describe('#manageTemplate.promise()', function() {
     it('should fail due to upper case letter in template name', function() {
       return uut({
         host: process.env.ELASTICSEARCH_HOST,
-        amazonES,
         retries: 2,
         manageTemplate: true,
         templateName: 'testTemplate',
@@ -33,7 +27,6 @@ describe('#manageTemplate.promise()', function() {
     it('should fail due to unavailable server', function() {
       return uut({
         host: process.env.ELASTICSEARCH_HOST + 'x',
-        amazonES,
         retries: 2,
         manageTemplate: true,
         templateName: 'testTemplate',
@@ -47,7 +40,6 @@ describe('#manageTemplate.promise()', function() {
     it('should create template', function() {
       return uut({
         host: process.env.ELASTICSEARCH_HOST,
-        amazonES,
         manageTemplate: true,
         templateName: 'testtemplate',
         templateOverwrite: true,
@@ -62,7 +54,6 @@ describe('#manageTemplate.promise()', function() {
     it('if manageTemplate flag is false', function() {
       return uut({
         host: process.env.ELASTICSEARCH_HOST,
-        amazonES,
         manageTemplate: false,
         templateName: 'testtemplate',
         templateOverwrite: false,
@@ -75,7 +66,6 @@ describe('#manageTemplate.promise()', function() {
     it('manageTemplate flag is undefined', function() {
       return uut({
         host: process.env.ELASTICSEARCH_HOST,
-        amazonES,
         templateName: 'testtemplate',
         templateOverwrite: false,
         templateDir: path.join(__dirname, './fixtures/templates')
@@ -87,7 +77,6 @@ describe('#manageTemplate.promise()', function() {
     it('if it already exists and templateOverwrite is false', function() {
       return uut({
         host: process.env.ELASTICSEARCH_HOST,
-        amazonES,
         manageTemplate: true,
         templateName: 'testtemplate',
         templateOverwrite: false,
