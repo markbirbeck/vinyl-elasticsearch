@@ -40,7 +40,7 @@ describe('src', function() {
    * all.....
    */
 
-  this.timeout(10000);
+  this.timeout(40000);
 
   it('should propagate error when host invalid', done => {
     let opt = _.clone(_opt);
