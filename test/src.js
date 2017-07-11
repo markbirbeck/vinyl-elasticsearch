@@ -2,7 +2,9 @@
 let path = require('path');
 require('chai').should();
 let _ = require('lodash');
+let h = require('highland');
 let uut = require('../lib/src');
+let dest = require('../lib/dest');
 
 let _opt = {
   host: process.env.ELASTICSEARCH_HOST,
@@ -14,6 +16,23 @@ let _opt = {
 };
 
 describe('src', function() {
+
+  before(function(done) {
+    this.timeout(10000);
+    h([
+      {
+        'id': 'a08bec48-3058-4f3f-aba0-7f027f8259c4-1447336627-playbackStarted',
+        type: 'ListenAction',
+        index: 'logstash-2017-04-01',
+        data: {
+          hello: 'world'
+        }
+      },
+    ])
+    .through(dest({}, _opt))
+    .done(done)
+    ;
+  });
 
   /**
    * NOTE: The following test can pass successfully, but won't tell us when it
