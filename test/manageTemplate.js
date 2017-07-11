@@ -20,7 +20,7 @@ describe('#manageTemplate.promise()', function() {
         templateOverwrite: true,
         templateDir: path.join(__dirname, './fixtures/templates')
       })
-      .should.be.rejectedWith('index_template [testTemplate] invalid, cause [name must be lower cased]');
+      .should.be.rejectedWith('index_template [testTemplate] invalid, cause [Validation Failed: 1: name must be lower cased;]');
       ;
     });
 
